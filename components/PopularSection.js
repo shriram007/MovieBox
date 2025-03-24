@@ -12,6 +12,7 @@ export default function PopularSection({
 }) {
   const isMobile = useIsMobile(768);
   const [expanded, setExpanded] = useState(false);
+  const isJavaScriptEnabled = typeof window !== "undefined";
 
   const combined = [
     ...movies.map((item) => ({ ...item, isSeries: false })),
@@ -38,7 +39,9 @@ export default function PopularSection({
   return (
     <section className="w-full max-w-4xl px-4">
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
+        initial={
+          isJavaScriptEnabled ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }
+        }
         animate={{ opacity: 2, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
         className="text-xl md:text-2xl font-semibold mb-4 text-center text-red-500/70"
@@ -46,9 +49,11 @@ export default function PopularSection({
         Popular Movies & Series
       </motion.h2>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={
+          isJavaScriptEnabled ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }
+        }
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 1 }}
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
       >
         {(expanded ? allItems : initialItems).map((item) => (

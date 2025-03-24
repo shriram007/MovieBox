@@ -13,6 +13,8 @@ export default function PopularPersons({ persons = [] }) {
   const initialItems = isMobile ? persons.slice(0, 4) : persons.slice(0, 5);
   const allItems = isMobile ? persons.slice(0, 12) : persons.slice(0, 15);
 
+  const isJavaScriptEnabled = typeof window !== "undefined";
+
   if (persons.length === 0) {
     return (
       <p className="text-center text-gray-400">No popular persons available.</p>
@@ -22,7 +24,9 @@ export default function PopularPersons({ persons = [] }) {
   return (
     <section className="w-full max-w-4xl pl-7 mt-8 relative">
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
+        initial={
+          isJavaScriptEnabled ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }
+        }
         animate={{ opacity: 2, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
         className="text-xl md:text-2xl font-semibold mb-4 text-center text-red-500/70"
@@ -30,9 +34,11 @@ export default function PopularPersons({ persons = [] }) {
         Popular Persons
       </motion.h2>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={
+          isJavaScriptEnabled ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }
+        }
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 1 }}
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
       >
         {(expanded ? allItems : initialItems).map((person) => (
