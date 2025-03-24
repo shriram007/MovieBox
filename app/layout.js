@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/react"
 import Navbar from "../components/Navbar";
 import { fetchPopularMovies } from "../lib/tmdb";
 import "./globals.css";
@@ -28,6 +29,7 @@ export default async function RootLayout({ children }) {
           <main>{children}</main>
           <Footer />
         </Suspense>
+        <Analytics />
       </body>
     </html>
   );
