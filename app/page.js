@@ -42,7 +42,7 @@ export default async function Home() {
   }
 
   return (
-    <div>
+    <div className="bg-[#121212] text-white">
       <Navbar popularMovies={popularMovies} />
       <Carousel nowPlaying={nowPlaying} />
       <div className="flex flex-col items-center mt-4 gap-8">
