@@ -44,7 +44,7 @@ export default async function DetailPage({ params, searchParams }) {
     );
 
     return (
-      <div className="container mx-auto px-2 py-8">
+      <div className="container mx-auto px-2 py-8 bg-[#121212] text-white">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/3 mt-2 px-2">
             <CardImage
@@ -144,7 +144,7 @@ export default async function DetailPage({ params, searchParams }) {
       item;
 
     return (
-      <div className="container mx-auto  py-8">
+      <div className="container mx-auto bg-[#121212] text-white py-8">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/3 mt-5 px-7">
             <CardImage
